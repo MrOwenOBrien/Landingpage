@@ -106,22 +106,68 @@
       <div>
         <h1>Special messages deserve a special place</h1>
 
-        <div id="waitlist" class="card">
-          <form id="waitlist-form" method="POST" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID">
-            <input class="input" type="email" name="email" placeholder="Enter your email" required />
-            <button class="btn btn-primary" type="submit" id="submit-btn">Join the waitlist</button>
-            <input type="hidden" name="source" value="landing" />
-            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute; left:-5000px;" aria-hidden="true" />
+<form id="waitlist-form">
+  <input class="input" type="email" name="email" placeholder="Enter your email" required />
+  <input class="input" type="text" name="name" placeholder="Your name (optional)" />
+  <label class="consent">
+    <input type="checkbox" id="consent" name="consent" required />
+    I agree to receive early access updates and launch emails.
+  </label>
+  <button class="btn btn-primary" type="submit" id="submit-btn">Join the waitlist</button>
+</form>
 
-            <label class="consent">
-              <input type="checkbox" id="consent" required />
-              <span>I agree to receive early access updates and launch emails. <span>Unsubscribe anytime</span>.</span>
-            </label>
+<div class="success" id="msg-success" hidden>You're on the list! 💕</div>
+<div class="error" id="msg-error" hidden>Hmm, something went wrong. Please try again.</div>
 
-            <div class="success" id="msg-success" hidden>You're on the list! 💕</div>
-            <div class="error" id="msg-error" hidden>Hmm, something went wrong. Please try again.</div>
-          </form>
-        </div>
+<script>
+const form = document.getElementById('waitlist-form');
+const success = document.getElementById('msg-success');
+const errorMsg = document.getElementById('msg-error');
+const submitBtn = document.getElementById('submit-btn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  success.hidden = true;
+  errorMsg.hidden = true;
+
+  if (!form.consent.checked) {
+    errorMsg.textContent = 'Please agree to receive updates.';
+    errorMsg.hidden = false;
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Joining…';
+
+  const data = {
+    email: form.email.value,
+    name: form.name.value,
+    consent: form.consent.checked ? "yes" : "no"
+  };
+
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbz3HyjGB-JgeyK3EMDYWveKk3CSf_NzPDK8bBUlC3nB62EJsOG74gYgDPDNVdh-4SS11w/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    });
+
+    const result = await res.json();
+    if (result.result === "success") {
+      form.reset();
+      success.hidden = false;
+    } else {
+      errorMsg.hidden = false;
+    }
+  } catch (err) {
+    errorMsg.hidden = false;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Join the waitlist';
+  }
+});
+</script>
+
 
         <p class="lead">Love Letter is a Wi‑Fi connected mailbox for couples, BFFs, and family. Send messages and pixel art from the app to a device anywhere in the world.</p>
 
@@ -151,10 +197,6 @@
         </div>
 
 
-
-        
-
-
     </section>
 
 
@@ -163,31 +205,5 @@
     </footer>
   </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const form = document.getElementById('waitlist-form');
-    const success = document.getElementById('msg-success');
-    const errorMsg = document.getElementById('msg-error');
-    const submitBtn = document.getElementById('submit-btn');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      success.hidden = true; errorMsg.hidden = true;
-
-      const consent = document.getElementById('consent');
-      if (!consent.checked) { errorMsg.textContent = 'Please agree to receive updates.'; errorMsg.hidden = false; return; }
-
-      submitBtn.disabled = true; submitBtn.textContent = 'Joining…';
-      try {
-        const data = new FormData(form);
-        const endpoint = form.action;
-        const res = await fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) { form.reset(); success.hidden = false; }
-        else { errorMsg.hidden = false; }
-      } catch (err) { errorMsg.hidden = false; }
-      finally { submitBtn.disabled = false; submitBtn.textContent = 'Join the waitlist'; }
-    });
-  </script>
 </body>
 </html>
