@@ -99,6 +99,22 @@
       line-height: 1.4;
       font-family: 'Courier New', monospace;
     }
+
+    .video-wrapper {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      aspect-ratio: 9 / 16;
+      position: relative;
+    }
+
+    .video-wrapper iframe {
+      position: center;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
@@ -156,5 +172,13 @@
       }
     });
   </script>
+
+  <div class="video-wrapper">
+    <iframe 
+      src="https://youtube.com/embed/tV_N2nQvexY" 
+      title="Love Letter Demo Video" 
+      allowfullscreen>
+    </iframe>
+  </div>
 </body>
 </html>
