@@ -115,10 +115,46 @@
       border: none;
       border-radius: 12px;
     }
+
+    /* layout for the row of buttons */
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+  /* shared button look */
+  .button-link {
+    display: inline-block;
+    background-color: #ff968a; /* base red accent */
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* hover state for both buttons */
+  .button-link:hover {
+    background-color: #b72b37;
+  }
+
+  .button-link.whatsapp {
+    background-color: #25D366; /* WhatsApp green */
+  }
+
+  .button-link.whatsapp:hover {
+    background-color: #1da851; /* darker green on hover */
+  }
   </style>
 </head>
 <body>
-  <header>❤️Launching October 1st❤️</header>
+  <header>Love Letter</header>
 
   <main>
     <!-- Replace src with your actual product image -->
@@ -133,19 +169,18 @@
     </form>
   </main>
 
-  <a href="https://www.kickstarter.com/projects/love-letter/love-letter-a-smart-device-for-loved-ones" 
-    target="_blank" 
-    rel="noopener">
-    <img src="assets/kickstarter.png" 
-        alt="Link to Kickstarter" 
-        class="product-image">
-  </a>
+
+  <div class="button-row">
+    <a href="https://www.kickstarter.com/projects/love-letter/love-letter-a-smart-device-for-loved-ones" 
+        target="_blank" rel="noopener" class="button-link">Back on Kickstarter</a>
+
+    <a href="https://chat.whatsapp.com/Lxu1m4b6GUP83RkcUzqpB0?mode=ems_copy_h_t" target="_blank" rel="noopener" class="button-link">Join WhatsApp</a>
+  </div>
 
   <footer>
     Love Letter is a Wi-Fi connected mailbox that lets you send sweet messages and pixel art to someone you love, no matter the distance.  
     Be the first to know when we launch 🚀 
   </footer>
-  
 
 
     <main>
@@ -181,6 +216,13 @@
       }
     });
   </script>
+    <div class="video-wrapper">
+    <iframe 
+      src="https://youtube.com/embed/ZE_cUpdJZHw" 
+      title="Progress we have made" 
+      allowfullscreen>
+    </iframe>
+  </div>
 
   <div class="video-wrapper">
     <iframe 
