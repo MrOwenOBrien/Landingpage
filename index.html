@@ -22,7 +22,7 @@
       padding: 2rem 1rem 1rem;
       font-size: 2.5rem;
       font-weight: bold;
-      color: #ff968a; /* red accent */
+      color: #ff1900; /* red accent */
       font-family: 'Courier New', monospace;
     }
 
@@ -34,7 +34,7 @@
       justify-content: center;
       gap: 1.5rem;
       width: 100%;
-      max-width: 600px;
+      max-width: 1000px;
       padding: 1rem;
     }
 
@@ -67,7 +67,7 @@
     }
 
     button {
-      background-color: #ff968a; /* red accent */
+      background-color: #ff1900; /* red accent */
       color: #fff;
       border: none;
       padding: 0.75rem 1.5rem;
@@ -128,7 +128,7 @@
   /* shared button look */
   .button-link {
     display: inline-block;
-    background-color: #ff968a; /* base red accent */
+    background-color: #ff1900; /* base red accent */
     color: #fff;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
@@ -137,6 +137,8 @@
     font-weight: bold;
     transition: background-color 0.2s;
     font-family: 'Courier New', monospace;
+    border: 2px solid #000;
+    border-radius: 8px;
   }
 
   /* hover state for both buttons */
@@ -154,32 +156,67 @@
   </style>
 </head>
 <body>
-  <header>Love Letter</header>
 
-  <main>
-    <!-- Replace src with your actual product image -->
-    <img src="assets/The Story.png" alt="Love Letter Device" class="product-image">
+<main style="width:100%; max-width:1000px; margin:0 auto;">
 
-    <form id="emailForm">
-      <div>
-        <input type="email" id="email" name="email" placeholder="e-mail address" required />
-        <button type="submit">Reserve Now</button>
-      </div>
-      <div id="message"></div>
-    </form>
-  </main>
+  <!-- First banner (top) -->
+  <img src="assets/Topbanner.png" alt="Love Letter Device" 
+       style="width:100%; height:auto; display:block;">
 
+  <!-- Second banner with email form overlay -->
+  <div style="position:relative; width:100%; max-width:1000px; margin-top:2rem;">
+
+    <!-- Second image -->
+    <img src="assets/email.png" alt="Love Letter Device" 
+         style="width:100%; height:auto; display:block;">
+
+    <!-- Email form overlay -->
+<div style="position:absolute; top:60%; left:65%; 
+            transform:translate(-20%, -20%);
+            background-color: rgba(255,255,255,0.95); 
+            border:2px solid #000; 
+            border-radius:12px; 
+            padding:2rem; 
+            max-width:400px; 
+            width:90%; 
+            box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+  <h2 style="font-family:'Courier New', monospace; color:#ff1900; text-align:center; margin-bottom:1rem;">Get Updates + Discount</h2>
+  <form id="emailForm">
+    <div style="display:flex; flex-direction:column; gap:0.5rem;">
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Reserve Now</button>
+    </div>
+    <div id="message" style="margin-top:0.5rem;"></div>
+  </form>
+</div>
+
+
+  </div>
+
+</main>
 
   <div class="button-row">
     <a href="https://www.kickstarter.com/projects/love-letter/love-letter-a-smart-device-for-loved-ones" 
-        target="_blank" rel="noopener" class="button-link">Back on Kickstarter</a>
+        target="_blank" rel="noopener" class="button-link">Check out the Kickstarter</a>
 
-    <a href="https://chat.whatsapp.com/Lxu1m4b6GUP83RkcUzqpB0?mode=ems_copy_h_t" target="_blank" rel="noopener" class="button-link">Join WhatsApp</a>
+    <a href="https://chat.whatsapp.com/Lxu1m4b6GUP83RkcUzqpB0?mode=ems_copy_h_t" target="_blank" rel="noopener" class="button-link">Watch the developement process live!</a>
   </div>
 
+<div style="width:100%; max-width:800px; margin:1rem auto; text-align:center;">
+  <iframe 
+    width="100%" 
+    height="450" 
+    src="https://www.youtube.com/embed/DulTFN2vvhk" 
+    title="Love Letter Video Demo" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+    style="border-radius:12px;">
+  </iframe>
+</div>
+
   <footer>
-    Love Letter is a Wi-Fi connected mailbox that lets you send sweet messages and pixel art to someone you love, no matter the distance.  
-    Be the first to know when we launch 🚀 
+    Love Letter is a Wi-Fi connected mailbox that lets you send sweet messages, pixel art, and pictures!
   </footer>
 
 
